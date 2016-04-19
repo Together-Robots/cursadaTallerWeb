@@ -4,3 +4,7 @@ Boolean estaAbierta();
 Boolean estaCerrada();
 
 son la misma funcion.
+
+Una buena practica para que los testeos seam mucho mas legibles y mejor documentados es colocar todos los datos en variables y solo operar en las variables, sin colocar valores como parametros, sino pasando estos como variables. 
+Por ejemplo, en la parte donde se evaluan la cantidad de aperturas posibles, pasabamos como parametro un numero, lo cambié, ahora se pasa como parametro una variable que contiene la cantidad de aperturas.
+Si examinas el TEST testGetAperturasFallidas() notas la utilidad de esta practica.

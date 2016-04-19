@@ -5,6 +5,8 @@ public class Cerradura {
 	private Boolean estadoAbierta = false;
 	private Integer cantidadDeFallosPosibles = null;
 	private Integer contadorDeFallos = 0; //null cannot be operated.
+	private Integer contadorDeAperturasExitosas = 0;
+	private Integer contadorDeAperturasFallidas = 0;
 	private Boolean estadoBloqueada = false;
 
 	public Cerradura(Integer clave, Integer cantidadFallosPosibles) {
@@ -22,11 +24,13 @@ public class Cerradura {
 				if (clave.equals(claveApertura)) {
 					estadoAbierta = true;
 					contadorDeFallos = 0;
+					contadorDeAperturasExitosas += 1;
 					return true;
 				} else {
 					estadoAbierta = false;
-					contadorDeFallos = contadorDeFallos + 1;
-					return false;
+					contadorDeFallos += 1;
+					contadorDeAperturasFallidas += 1;
+ 					return false;
 				}
 			}
 		} else {
@@ -40,6 +44,14 @@ public class Cerradura {
 			return true;
 		}
 		return false;
+	}
+	
+	public Integer cantidadDeAperturasExitosas(){
+		return contadorDeAperturasExitosas;
+	}
+	
+	public Integer cantidadDeAperturasFallidas(){
+		return contadorDeAperturasFallidas;
 	}
 
 }
