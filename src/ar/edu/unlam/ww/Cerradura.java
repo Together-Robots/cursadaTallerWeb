@@ -53,5 +53,9 @@ public class Cerradura {
 	public Integer cantidadDeAperturasFallidas(){
 		return contadorDeAperturasFallidas;
 	}
+	
+	public Boolean bloqueada(){
+		return estadoBloqueada;
+	}
 
 }
