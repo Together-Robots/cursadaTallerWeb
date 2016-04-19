@@ -17,7 +17,6 @@ public class CerraduraTest {
 	public void testAbrirFalse(){
 		Integer claveATestear = 1234;
 		Integer claveFalsa = 4444;
-		
 		Cerradura miCerradura = new Cerradura(claveATestear,2);
 		Assert.assertFalse(miCerradura.abrir(claveFalsa));
 	}
@@ -38,13 +37,13 @@ public class CerraduraTest {
 	}
 	
 	@Test
-	public void testEstaBloqueada(){
+	public void testAbrirBloqueada(){
 		Integer claveATestear = 1234;
-		Integer claveATestearErronea = 1111; 
+		Integer claveFalsa = 1111; 
 		Cerradura miCerradura = new Cerradura(claveATestear,2);
-		miCerradura.abrir(claveATestearErronea);
-		miCerradura.abrir(claveATestearErronea);
-		
+		miCerradura.abrir(claveFalsa);
+		miCerradura.abrir(claveFalsa);
+		miCerradura.abrir(claveFalsa);
 		Assert.assertFalse(miCerradura.abrir(claveATestear));
 	}
 	

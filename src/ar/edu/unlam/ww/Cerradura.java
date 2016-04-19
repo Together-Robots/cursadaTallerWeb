@@ -3,33 +3,38 @@ package ar.edu.unlam.ww;
 public class Cerradura {
 	private Integer claveApertura = null;
 	private Boolean estadoAbierta = false;
-	private Integer cantidadDeFallosConsecutivos = null;
-	private Integer contadorDeFallos = null;
+	private Integer cantidadDeFallosPosibles = null;
+	private Integer contadorDeFallos = 0; //null cannot be operated.
+	private Boolean estadoBloqueada = false;
 
 	public Cerradura(Integer clave, Integer cantidadFallosPosibles) {
 		claveApertura = clave;
-		cantidadDeFallosConsecutivos = cantidadFallosPosibles;
+		cantidadDeFallosPosibles = cantidadFallosPosibles;
 	}
 
-	public Boolean abrir(Integer clave){
-		if (cantidadDeFallosConsecutivos.equals(contadorDeFallos)){
-			estadoAbierta = false;
+	public Boolean abrir(Integer clave) {
+		if (!estadoBloqueada) {
+			if (cantidadDeFallosPosibles.equals(contadorDeFallos)) {
+				estadoAbierta = false;
+				estadoBloqueada = true;
+				return false;
+			} else {
+				if (clave.equals(claveApertura)) {
+					estadoAbierta = true;
+					contadorDeFallos = 0;
+					return true;
+				} else {
+					estadoAbierta = false;
+					contadorDeFallos = contadorDeFallos + 1;
+					return false;
+				}
+			}
+		} else {
 			return false;
 		}
-		else {
-			if (clave.equals(claveApertura)){
-				estadoAbierta = true;
-				contadorDeFallos = 0;
-				return true;
-			}
-			else {
-				estadoAbierta = false;
-				contadorDeFallos += 1;
-				return false;
-			}
-		}
+
 	}
-	
+
 	public Boolean estaAbierta() {
 		if (estadoAbierta) {
 			return true;
