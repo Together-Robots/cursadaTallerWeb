@@ -1,0 +1,10 @@
+Implemetar la clase cerradura.
+	metodos:
+	Constructor con dos parametros (int clave de apertura,int fallos consecutivos para bloquarse)
+	Boolean Abrir (int clave)
+	void cerrar()
+	Boolean estaAbierta()
+	Boolean estaCerrada()
+	Boolean fueBloqueada()
+	Integer getAperturasExitosas()
+	Integer getAperturasFallidas()
